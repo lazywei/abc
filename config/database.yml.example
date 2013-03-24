@@ -1,0 +1,16 @@
+development: &default
+  adapter: mysql2
+  encoding: utf8
+  database: listen_development
+  host: localhost
+  username: 'root'
+  password: ''
+
+test: &TEST
+  <<: *default
+  database: listen_test
+
+production:
+  <<: *default
+  database: listen_production
+
