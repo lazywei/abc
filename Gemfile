@@ -36,11 +36,10 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-gem 'venus'
 
-gem 'kaminari'
 
 group :development do
+  gem 'venus'
   gem "binding_of_caller"
   gem "better_errors"
   gem "magic_encoding"
@@ -48,4 +47,8 @@ group :development do
   gem "pry-nav"
   gem "pry-remote"
 end
+
 gem 'mysql2'
+gem 'typhoeus'
+gem 'nokogiri'
+gem 'kaminari'
