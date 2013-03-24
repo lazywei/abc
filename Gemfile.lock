@@ -36,6 +36,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (2.2.2.0)
+      sass (~> 3.2)
     builder (3.0.4)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -125,6 +127,9 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    turbo-sprockets-rails3 (0.3.6)
+      railties (> 3.2.8, < 4.0.0)
+      sprockets (>= 2.0.0)
     typhoeus (0.6.2)
       ethon (~> 0.5.10)
     tzinfo (0.3.37)
@@ -143,6 +148,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 2.2.2.0)
   coffee-rails (~> 3.2.1)
   jquery-rails
   kaminari
@@ -154,6 +160,7 @@ DEPENDENCIES
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   sqlite3
+  turbo-sprockets-rails3
   typhoeus
   uglifier (>= 1.0.3)
   venus
