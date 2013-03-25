@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="offset8 span5 well" style="position: fixed">
+  <div id="playerBox" class="offset8 span5 well" style="position: fixed">
     <audio id="audioPlayer" controls="controls" style='width: 100%' src=''> 
       Your browser does not support the audio element.
     </audio><br />
@@ -17,8 +17,8 @@
       <b><%= Date.new(@date[0], @date[1]).strftime('%Y %b') %></b>
     <% end %>
   </div>
-  <ul class="span9">
-    <% @topics.each do |topic| %>
+  <ul class="span9 topics">
+    <% @topics.each_with_index do |topic, i| %>
       <li style="margin: 15px">
       <h4>
         <%= render_date(topic.published_at) %>
