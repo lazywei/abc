@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="offset8 span5 well" style="position: fixed">
+    <audio id="audioPlayer" controls="controls" style='width: 100%' src=''> 
+      Your browser does not support the audio element.
+    </audio><br />
+    <div id="repeatControl">
+      <span class="btn btn-primary a-time" style="margin-right: 10px">Set A</span>
+      <span class="btn btn-primary b-time" style="margin-right: 10px">Set B</span>
+      <span class="btn btn-action store" style="margin-right: 10px">Store</span>
+      <span class="btn btn-danger clear" style="float: right">Clear</span>
+    </div>
+    <dl id="store-list">
+    </dl>
+  </div>
+  <ul class="span9">
+    <% @topics.each do |topic| %>
+      <li style="margin: 15px">
+      <h4>
+        [<%= link_to topic.published_at.strftime('%Y - %m'), '', :style => 'margin: 15px' %>]
+        <%= link_to topic.title, topic_path(topic), :style => 'margin: 15px', :class => 'topic-title' %>
+      </h4>
+      <div class="topic-detail row" style="display: none;" data-audio="<%= topic.audio %>">
+        <div class="span8">
+          <%= simple_format(topic.transcript) %>
+        </div>
+      </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= paginate @topics %>

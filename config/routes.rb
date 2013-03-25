@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 Listen::Application.routes.draw do
+  root :to => 'topics#index'
+  resources :topics, :only => [:index, :show]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
