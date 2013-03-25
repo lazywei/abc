@@ -1,7 +1,9 @@
 # -*- encoding : utf-8 -*-
 Listen::Application.routes.draw do
   root :to => 'topics#index'
-  resources :topics, :only => [:index, :show]
+  resources :topics, :only => [:index, :show] do
+    get 'by_date/:year/:month' => 'topics#by_date', :as => 'by_date', :on => :collection
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

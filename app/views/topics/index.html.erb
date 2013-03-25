@@ -9,14 +9,19 @@
       <span class="btn btn-action store" style="margin-right: 10px">Store</span>
       <span class="btn btn-danger clear" style="float: right">Clear</span>
     </div>
-    <dl id="store-list">
-    </dl>
+    <ul id="store-list">
+    </ul>
+  </div>
+  <div class="offset3 span5">
+    <% unless @date.nil? %>
+      <b><%= Date.new(@date[0], @date[1]).strftime('%Y %b') %></b>
+    <% end %>
   </div>
   <ul class="span9">
     <% @topics.each do |topic| %>
       <li style="margin: 15px">
       <h4>
-        [<%= link_to topic.published_at.strftime('%Y - %m'), '', :style => 'margin: 15px' %>]
+        <%= render_date(topic.published_at) %>
         <%= link_to topic.title, topic_path(topic), :style => 'margin: 15px', :class => 'topic-title' %>
       </h4>
       <div class="topic-detail row" style="display: none;" data-audio="<%= topic.audio %>">

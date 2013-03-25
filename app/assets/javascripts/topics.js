@@ -70,7 +70,7 @@ function renderStoreList() {
   for (var i = 0; i < storeList.length; i++) {
     var aTime = storeList[i][0];
     var bTime = storeList[i][1];
-    arr.push("<li onclick='playFavor(" + i + ")'>" + aTime + " - " + bTime + "</li>");
+    arr.push("<li><a href='#' class='store-item' data-index='" + i + "'>" + aTime + " - " + bTime + "</a></li>");
   }
   $("#store-list").html(arr.join(""));
 }
@@ -139,6 +139,11 @@ $('#repeatControl .store').bind('click', function (event) {
 $('#repeatControl .clear').bind('click', function (event) {
   if ($(event.target).is(':disabled')) {return};
   clearRepeat();
+});
+
+$('#store-list').on('click', '.store-item', function (event) {
+  playStoreList($(event.target).data('index'));
+  event.preventDefault();
 });
 
 $("#repeatControl *").prop("disabled", true);
