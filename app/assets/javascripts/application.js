@@ -48,3 +48,6 @@ $('.store').attr('data-intro','Store the interval.<br /><br />儲存當下設定
 
 $('.clear').attr('data-step','5');
 $('.clear').attr('data-intro','Click Clear to Exit repeat mode.<br /><br />離開重播模式');
+
+$('#date-filter').attr('data-step','6');
+$('#date-filter').attr('data-intro','Click year or month to specify date filter.<br /><br />選擇檢視某年或某月的主題');

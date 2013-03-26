@@ -13,20 +13,25 @@
     </ul>
   </div>
   <div class="offset3 span5">
-    <% unless @date.nil? %>
-      <b><%= Date.new(@date[0], @date[1]).strftime('%Y %b') %></b>
-    <% end %>
+    <b><%= render_date_range(@date) %></b>
   </div>
   <ul class="span9 topics">
     <% @topics.each_with_index do |topic, i| %>
       <li style="margin: 15px">
       <h4>
-        <%= render_date(topic.published_at) %>
-        <%= link_to topic.title, topic_path(topic), :style => 'margin: 15px', :class => 'topic-title' %>
+        [ <span id="date-filter" style="margin: 10px;"><%= render_topic_date(topic.published_at) %></span> ]
+        <%= link_to topic.title, '#', :style => 'margin: 10px', :class => 'topic-title' %>
       </h4>
       <div class="topic-detail row" style="display: none;" data-audio="<%= topic.audio %>">
         <div class="span8">
-          <%= simple_format(topic.transcript) %>
+          <ul>
+            <li>
+            <%= link_to 'original link', topic.url %>
+            </li>
+            <li>
+            <%= simple_format(topic.transcript) %>
+            </li>
+          </ul>
         </div>
       </div>
       </li>
