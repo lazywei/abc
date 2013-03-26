@@ -41,6 +41,9 @@
             <li>
               <span id="intro-btn" class="btn btn-info" style="margin: 10px">How to use</span>
             </li>
+            <li>
+              <div class="fb-like" data-href="http://abc.lazywei.com/" data-send="false" data-width="450" data-show-faces="false" data-font="arial" data-colorscheme="dark" style="margin: 10px"></div>
+            </li>
           </ul>
           <ul class="nav pull-right">
             <li>
@@ -73,5 +76,14 @@
       <%= javascript_include_tag "http://localhost:35729/livereload.js" if Rails.env.development? %>
       <%= javascript_include_tag "application" %>
       <%= yield :javascript %>
+      <!-- facebook like btn -->
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=229501357087659";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>
