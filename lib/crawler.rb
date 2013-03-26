@@ -25,12 +25,34 @@ class Crawler
     return data
   end
 
+  def crawl_update
+    data = []
+
+    endDate = Time.now.to_date.to_s.split('-')
+    endDate = endDate[1..-1].push(endDate[0][2..-1]).join('/')
+
+    url = "#{@base_url}/view/utils/Archive.cfc?method=loadContentScroll&maxRows=5&category_id=&contenttype_id=25&issue_column_id=&partnerFeatured=&author_id=&endDate=#{endDate}&startRow=1"
+    r = Typhoeus::Request.post(url)
+    doc = Nokogiri::HTML(r.body)
+    doc.css('li').each do |li|
+      data << {
+        :title => li.at_css('h3').content.gsub("\n", ''),
+        :url => @base_url + li.at_css('h3 a').attr('href'),
+        :published_at => Date.strptime(li.at_css('h3 a').attr('href')[-8..-1], '%y-%m-%d')
+      }
+    end
+
+    data.reject! {|x| !Topic.where(:title => x[:title]).empty? }
+
+    return data
+  end
+
   def crawl_details(datas)
     datas.each do |data|
       r = Typhoeus::Request.get(data[:url])
       doc = Nokogiri::HTML(r.body)
       data[:audio] = @base_url + '/podcast/' + doc.at_css('p#episodeLinks a').attr('href')
-      data[:transcript] = doc.css('div#articleContent p').map(&:content)[1..-2].join('\n')
+      data[:transcript] = doc.css('div#articleContent p').map(&:content)[1..-2].join('\n').gsub("\\n", "\n")
       Topic.create!(data)
     end
   end
