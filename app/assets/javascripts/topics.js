@@ -28,38 +28,38 @@ function clearRepeat() {
 function preA() {
     if (aTime < 1) {return};
     aTime -= 0.5; 
-    $("span.a-time").html(aTime.toFixed(1));
+    $("span.a-time").html(parseInt(aTime).toFixed(1));
 }
 
 function preB() {
     if (bTime < 1 || bTime - 0.5 <= aTime) {return};
     bTime -= 0.5; 
-    $("span.b-time").html(bTime.toFixed(1));
+    $("span.b-time").html(parseInt(bTime).toFixed(1));
 }
 
 function nextA() {
     aTime += 0.5; 
-    $("span.a-time").html(aTime.toFixed(1));
+    $("span.a-time").html(parseInt(aTime).toFixed(1));
 }
 
 function nextB() {
     if (bTime <= aTime) {bTime = aTime};
     bTime += 0.5; 
-    $("span.b-time").html(bTime.toFixed(1));
+    $("span.b-time").html(parseInt(bTime).toFixed(1));
 }
 
 
 function store() {
     var arr = new Array();
-    storeList.push([aTime.toFixed(1), bTime.toFixed(1)]);
+    storeList.push([parseInt(aTime).toFixed(1), parseInt(bTime).toFixed(1)]);
     renderStoreList();
 }
 
 function playStoreList(i) {
-    var aTime = storeList[i][0];
-    var bTime = storeList[i][1];
-    $("span.a-time").html(aTime.toFixed(1));
-    $("sapn.b-time").html(bTime.toFixed(1));
+    aTime = storeList[i][0];
+    bTime = storeList[i][1];
+    $("span.a-time").html(parseInt(aTime).toFixed(1));
+    $("span.b-time").html(parseInt(bTime).toFixed(1));
     repeatAb();
 }
 
@@ -75,13 +75,13 @@ function renderStoreList() {
 
 function setA() {
     aTime = parseInt(myAudio.currentTime);
-    $("span.a-time").html(aTime.toFixed(1));
+    $("span.a-time").html(parseInt(aTime).toFixed(1));
     if(myAudio.paused) {myAudio.play()};
 }
 
 function setB() {
     bTime = parseInt(myAudio.currentTime);
-    $("span.b-time").html(bTime.toFixed(1));
+    $("span.b-time").html(parseInt(bTime).toFixed(1));
     repeatAb();
 }
 
@@ -132,7 +132,7 @@ $('#repeatControl .store').bind('click', function (event) {
     if ($(event.target).is(':disabled') || bTime < 1) {return};
     store();
     aTime = bTime;
-    $("span.a-time").html(bTime.toFixed(1));
+    $("span.a-time").html(parseInt(bTime).toFixed(1));
     $("span.b-time").html("Set B");
     bTime = 0;
 });
