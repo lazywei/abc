@@ -9,4 +9,5 @@ set :output, "log/cron_log.log"
 
 every 8.hours do
   rake "update_topic:update"
+  rake "update_topic:clean"
 end
